@@ -3,4 +3,4 @@
 
 
 Разработка Telegram Bot на базе библиотеки aiogram<br>
-Используем иетод polling для работы с telegram Bot API
+Используем метод polling для работы с telegram Bot API
