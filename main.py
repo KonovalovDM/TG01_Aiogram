@@ -10,7 +10,7 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 # Список городов для прогноза
-CITIES = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань"]
+CITIES = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Ташкент", "Паттайя"]
 
 # Создаем клавиатуру с городами
 city_keyboard = ReplyKeyboardMarkup(
@@ -66,7 +66,7 @@ async def photo(message: Message):
 async def react_photo(message: Message):
     responses = [
         'Ого, какая непонятная фотка!',
-        'Непонятно, что это такое?!',
+        'Не вкурил, а что это такое?!',
         'Не отправляй мне такое больше!'
     ]
     rand_response = random.choice(responses)
@@ -83,6 +83,10 @@ async def help_command(message: Message):
 @dp.message(CommandStart)
 async def start(message: Message):
     await message.answer('Приветики! Я бот! Могу показать погоду, фотки и многое другое!')
+
+@dp.message()
+async def echo(message: Message):
+    await message.send_copy(chat_id=message.chat.id)
 
 async def main():
     # Запускаем polling
